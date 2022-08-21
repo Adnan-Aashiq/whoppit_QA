@@ -66,8 +66,8 @@ export class Login {
     login() {
         cy.visit("https://dev.whoppit.com/company/signup/step1")
         cy.get(".footergroup a[href*='login']").click()
-        cy.get("#email").type('testuser@mailinator.com')
-        cy.get("#password").type('TestingUser1@123.')
+        cy.get("#email").type('alex.ramsdale@icloud.com')
+        cy.get("#password").type('testing123')
         cy.get("#company-login-btn").click()
     }
 
