@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-export class CreateJob {
+export class CreateJob_Company {
     basic() {
         cy.get("#select2-number_of_hires-container").type('2' + "{enter}")
         cy.get("#select2-advert_job_title-container").click()
@@ -87,7 +87,7 @@ export class CreateJob {
         cy.get('[style="padding-right: 5px; display: block;"] > .modal-dialog > .modal-content > #advert-preview-modal-body > .new-design > .floating-contact-btn > .container-fluids > .bottom-bar-float > #go_back_preview').click()
     }
 }
-export class JobApply {
+export class JobApply_Company {
     miscellaneous() {
         cy.get(".navigation ul li:nth-child(3) a[href='/company/manage-jobs']").click()
         cy.get('.job-applications-wrap div:nth-child(6) div:nth-child(2) div:nth-child(1) div:nth-child(1) h5 a').invoke('removeAttr', 'target').click({ force: true })
@@ -96,7 +96,8 @@ export class JobApply {
     registration() {
         cy.get("#first_name").type("Adam", { force: true })
         cy.get("#last_name").type("Junior", { force: true })
-        cy.get('#user-job-signup-form > :nth-child(2) > #email').type("adamjunior@mailinator.com", { force: true })
+        let num = Math.floor(Math.random() * 1000);
+        cy.get('#user-job-signup-form > :nth-child(2) > #email').type("adamjunior"+num+"@mailinator.com", { force: true })
         cy.get(':nth-child(3) > .select2-container > .selection > .select2-selection > .select2-selection__rendered > .select2-search > .select2-search__field').click()
         cy.get(".select2-results__options li:nth-child(10)").click()
         cy.get("#Password").type("testing@123456", { force: true })
@@ -119,5 +120,13 @@ export class JobApply {
         cy.get('.mt-4 > .input-group > #password').type("testing@123456", { force: true })
         cy.get('#user-job-login-btn').click()
         cy.get('.container-fluid > .job-preview-wrap > .card > .card-body > .preview-form-details > .detail-listing > .pt-3 > .actions-div > .content-wrap > .pt-2 > #apply-job-form > #user-job-apply-btn > strong').click()
+    }
+
+}
+export class JobApply_User {
+    applyForjob(){
+        cy.get("#recent-job-invites div:nth-child(3) #recent_job_company_name_354").invoke('removeAttr', 'target').click({ force: true })
+
+
     }
 }

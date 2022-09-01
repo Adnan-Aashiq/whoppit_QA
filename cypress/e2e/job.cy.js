@@ -1,36 +1,42 @@
 /// <reference types="cypress"/>
 
 import { Login } from "../pages/authentication"
-import { CreateJob } from "../pages/job"
-import { JobApply } from "../pages/job"
+import { CreateJob_Company} from "../pages/job"
+import { JobApply_Company } from "../pages/job"
+import { JobApply_User } from "../pages/job"
 
 const loginobj = new Login()
-const createjobobj = new CreateJob()
-const jobapplyobj = new JobApply()
+const createjobcompanyobj = new CreateJob_Company()
+const jobapplycompanyobj = new JobApply_Company()
+const jobapplyuserobj = new JobApply_User()
 
 describe('Job posting and applying',()=>{
-    it('Create a Job Post',()=>{
+    beforeEach(()=>{
         cy.viewport(1200,800)
+    })
+    it('Create a Job Post By Company',()=>{
         loginobj.login()
         cy.get(".navigation a[href*='/company/post-free-advert']").click({force:true})
-        createjobobj.basic()
-        createjobobj.terms()
-        createjobobj.requirement()
-        createjobobj.about()
-        createjobobj.share()
+        createjobcompanyobj.basic()
+        createjobcompanyobj.terms()
+        createjobcompanyobj.requirement()
+        createjobcompanyobj.about()
+        createjobcompanyobj.share()
     })
-    it('Apply on Job by registration',()=>{
-        cy.viewport(1200,800)
+    it('Apply on Job by registration By Company',()=>{
         loginobj.login()
-        jobapplyobj.miscellaneous()
+        jobapplycompanyobj.miscellaneous()
         cy.get('.container-fluid > .job-preview-wrap > .card > .card-body > .preview-form-details > .detail-listing > .pt-3 > .actions-div > .content-wrap > :nth-child(1) > #register_apply_btn > strong').click()
-        jobapplyobj.registration()
+        jobapplycompanyobj.registration()
     })
-    it.only('Apply on Job by login',()=>{
-        cy.viewport(1200,800)
+    it('Apply on Job by login By Company',()=>{
         loginobj.login()
-        jobapplyobj.miscellaneous()
+        jobapplycompanyobj.miscellaneous()
         cy.get('.container-fluid > .job-preview-wrap > .card > .card-body > .preview-form-details > .detail-listing > .pt-3 > .actions-div > .content-wrap > :nth-child(1) > [data-target="#login"] > strong').click()
-        jobapplyobj.login()
+        jobapplycompanyobj.login()
+    })
+    it.only('Apply on Job by login By Company',()=>{
+        loginobj.login('user')
+        jobapplyuserobj.applyForjob()
     })
 })
