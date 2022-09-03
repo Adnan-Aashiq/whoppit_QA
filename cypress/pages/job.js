@@ -56,8 +56,7 @@ export class CreateJob_Company {
     }
     requirement() {
         cy.get("#advert_qualifications").select("CSCS - Gold Card", { force: true })
-        cy.get("#select2-additional_requirment-container").click()
-        cy.get(".select2-results__options li:nth-child(2)").click()
+        cy.get("#additional_requirment").select("Must have VISA",{force: true})
         cy.get("#min_year_exp").select("3", { force: true })
         cy.get("#education").type("Bachelors in Computer Science")
         cy.get("#remotetype").select("Flexible")
@@ -82,15 +81,15 @@ export class CreateJob_Company {
         cy.get("#job-boards-prem tr:nth-child(4) td:nth-child(2) label").click()
         //cy.get("#job-boards-prem tr:nth-child(4) td:nth-child(3) label").click()
 
-        cy.get("#message-content div:last-child div:last-child #preview-JobBoard-btn").click()
-        cy.wait(3000)
-        cy.get('[style="padding-right: 5px; display: block;"] > .modal-dialog > .modal-content > #advert-preview-modal-body > .new-design > .floating-contact-btn > .container-fluids > .bottom-bar-float > #go_back_preview').click()
+        cy.get("#message-content div:last-child div:last-child a[href='#message-tab']").click()
+        cy.get('#share-content div:last-child div:last-child #preview-JobBoard-btn').click()
+        cy.get("#go_back_preview").click()
     }
 }
 export class JobApply_Company {
     miscellaneous() {
         cy.get(".navigation ul li:nth-child(3) a[href='/company/manage-jobs']").click()
-        cy.get('.job-applications-wrap div:nth-child(6) div:nth-child(2) div:nth-child(1) div:nth-child(1) h5 a').invoke('removeAttr', 'target').click({ force: true })
+        cy.get('.job-applications-wrap div:nth-child(7) div:nth-child(2) div:nth-child(1) div:nth-child(1) h5 a').invoke('removeAttr', 'target').click({ force: true })
         cy.wait(3000)
     }
     registration() {
