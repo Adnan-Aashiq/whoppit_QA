@@ -35,8 +35,8 @@ describe('Job posting and applying',()=>{
         cy.get('.container-fluid > .job-preview-wrap > .card > .card-body > .preview-form-details > .detail-listing > .pt-3 > .actions-div > .content-wrap > :nth-child(1) > [data-target="#login"] > strong').click()
         jobapplycompanyobj.login()
     })
-    it.only('Apply on Job by login By Company',()=>{
-        loginobj.login('user')
-        jobapplyuserobj.applyForjob()
-    })
+    // it('Apply on Job by login By User',()=>{
+    //     loginobj.login('user')
+    //     jobapplyuserobj.applyForjob()
+    // })
 })

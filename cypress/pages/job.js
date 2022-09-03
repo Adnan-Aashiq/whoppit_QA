@@ -125,8 +125,8 @@ export class JobApply_Company {
 }
 export class JobApply_User {
     applyForjob(){
-        cy.get("#recent-job-invites div:nth-child(3) #recent_job_company_name_354").invoke('removeAttr', 'target').click({ force: true })
-
+        cy.get("#recent-job-invites div:nth-child(5) div:nth-child(1) div:nth-child(1) div:nth-child(3) ul li ul a").should('have.attr', 'target', '_blank').invoke('removeAttr', 'target').click({ force: true })
+        //cy.get('.container-fluid > .job-preview-wrap > .card > .card-body > .preview-form-details > .detail-listing > .pt-3 > .actions-div > .content-wrap > .pt-2 > #apply-job-form > #user-job-apply-btn').click()
 
     }
 }

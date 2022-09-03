@@ -34,7 +34,7 @@ describe('Authetication for new User',()=>{
         loginobj.login("user")
         userprofileobj.editUserProfile()
     })
-    it.only('Change password Users Profile',()=>{
+    it('Change password Users Profile',()=>{
         cy.viewport(1200,800)
         loginobj.login("user")
         userprofileobj.changePassowrd('user')
