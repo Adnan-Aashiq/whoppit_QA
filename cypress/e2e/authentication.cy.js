@@ -18,6 +18,11 @@ describe('Authetication for new User',()=>{
         loginobj.login("company")
         userprofileobj.editCompanyProfile()
     })
+    it.only('Change password Company Profile',()=>{
+        cy.viewport(1200,800)
+        loginobj.login("company")
+        userprofileobj.changePassowrd('company')
+    })
     it('Registration form for Jobseeker profile',()=>{
         loginobj.registration("user")
         loginobj.step2user()

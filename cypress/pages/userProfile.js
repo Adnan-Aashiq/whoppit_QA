@@ -23,6 +23,7 @@ export class UserProfile {
 
         cy.get("#first_name").clear()
         cy.get("#first_name").type("Black")
+        cy.get("#first_name").should('have.text',"Black")
 
         cy.get("#last_name").clear()
         cy.get("#last_name").type("Adam")
@@ -78,8 +79,9 @@ export class UserProfile {
             password = 'Testinguser@37.'
         }
         else if (usertype == 'company') {
-            password = 'testing123'
+            password = 'testing@123456'
         }
+        //let newpassword = 'testing@123456'
         cy.log(password)
         cy.get("#oldpassword").type(password)
         cy.get("#newpassword").type(password)

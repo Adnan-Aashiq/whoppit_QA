@@ -126,7 +126,7 @@ export class Login {
         else if (usertype == 'company') {
             cy.get("#login-box a").click()
             cy.get("#email").type('alex.ramsdale@icloud.com')
-            cy.get("#password").type('testing123')
+            cy.get("#password").type("testing@123456")
             cy.get("#"+usertype+"-login-btn").click()
         }
     }
