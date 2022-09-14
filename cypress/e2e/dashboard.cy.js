@@ -10,7 +10,11 @@ describe('DashBoard sections testing', () => {
     beforeEach(() => {
         cy.viewport(1200, 800)
     })
-    it('Reference Request module testing', () => {
+    it.only('Dashboard data testing by User Company', () => {
+        loginobj.login("company")
+        dashboardobj.dashboardTesting()
+    })
+    it('Reference Request module testing by User profile', () => {
         loginobj.login("user")
         dashboardobj.referenceRequest()
     })

@@ -4,11 +4,13 @@ import { Login } from "../pages/authentication"
 import { CreateJob_Company} from "../pages/job"
 import { JobApply_Company } from "../pages/job"
 import { JobApply_User } from "../pages/job"
+import { JobApplications } from "../pages/job"
 
 const loginobj = new Login()
 const createjobcompanyobj = new CreateJob_Company()
 const jobapplycompanyobj = new JobApply_Company()
 const jobapplyuserobj = new JobApply_User()
+const jobapplicationsObj = new JobApplications()
 
 describe('Job posting and applying',()=>{
     beforeEach(()=>{
@@ -35,8 +37,14 @@ describe('Job posting and applying',()=>{
         cy.get('.container-fluid > .job-preview-wrap > .card > .card-body > .preview-form-details > .detail-listing > .pt-3 > .actions-div > .content-wrap > :nth-child(1) > [data-target="#login"] > strong').click()
         jobapplycompanyobj.login()
     })
+    // page target issue
     // it('Apply on Job by login By User',()=>{
     //     loginobj.login('user')
     //     jobapplyuserobj.applyForjob()
     // })
+    it.only('SMS to Job Applicants By Company profiler',()=>{
+        loginobj.login('company')
+        jobapplicationsObj.sms()
+        
+    })
 })
