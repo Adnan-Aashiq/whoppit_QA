@@ -9,9 +9,13 @@ export class CreateJob_Company {
         cy.get(":nth-child(5) > .form-group > .form-group-inner > .tw-items-center").type("no digs" + "{enter}")
         cy.get("#select2-advert_industry-container").click()
         cy.get(".select2-results__options li:nth-child(2)").click()
-        cy.get("#addressgeo_places").type("House no 3 Street no 7 New York city", { force: true })
+        cy.get(':nth-child(2) > :nth-child(2) > .form-group-inner > .tw-items-center > .right-field > .field-wrap > .select2 > .selection > .select2-selection').click()
+        let num = Math.floor(Math.random() * 10 + 1);
+        cy.get('.select2-dropdown > .select2-search > .select2-search__field').type("new")
+        cy.wait(3000)
+        cy.get(".select2-results__options li:nth-child(" + num + ")").click()
         cy.get("#job_refreneces").type("Production Assistant")
-        cy.get(".note-editable.card-block p").type("We are looking for a farmer to oversee our farming operations. The responsibilities of a Farmer include performing physical labor, operating heavy machinery, and supervising farm workers.To be successful as a farmer, you should demonstrate a passion for the outdoors, knowledge of agricultural machinery, and physical stamina. Ultimately, a top-notch Farmer should possess physical strength, good hand-eye coordination, and a keen interest in agriculture.")
+        cy.get(".note-editable.card-block p").type("We are looking for a farmer to oversee our farming operations. The responsibilities of a Farmer include performing physical labor, operating heavy machinery, and supervising farm workers.")
         cy.get(".tab-pane.fade.show.active > div:nth-child(7) a").click()
     }
     terms() {
@@ -31,12 +35,23 @@ export class CreateJob_Company {
         cy.get("#salary").type("1200")
         cy.get("#select2-salarytype-container").click()
         cy.get(".select2-results__options li:nth-child(4)").click()
+        cy.get("#define_hrs_btn").dblclick()
 
-        //cy.get("#define_hrs_btn").click()
-        cy.get("#hours").select("8")
-        cy.get("#hours_from").type("10:10")
-        cy.get("#hours_till").type("07:10")
-        cy.get("#weekend_work_other_options").select("Day Shift", { force: true })
+        cy.get("#terms-content div:nth-child(3) div:first-child .tw-flex.tw-gap-x-2.tw-justify-between button").then(($element) => {
+            var classValue = $element.attr('class')
+            //var classValuetrimmed = classValue.replace(/\s+/g, '')
+            var finalval= classValue.split('-').pop()
+            cy.log(finalval)
+            if (finalval==='plus') {
+                cy.get("#define_hrs_btn").click()
+            }
+            else if (finalval==='minus') {
+            }
+            cy.get("#hours").select("8")
+            cy.get("#hours_from").type("10:10")
+            cy.get("#hours_till").type("07:10")
+            cy.get("#weekend_work_other_options").select("Day Shift", { force: true })
+        })
 
         cy.get("#weekend_rules_btn").click()
         cy.get("#weekend_work_sat").click()
@@ -56,13 +71,13 @@ export class CreateJob_Company {
     }
     requirement() {
         cy.get("#advert_qualifications").select("CSCS - Gold Card", { force: true })
-        cy.get("#additional_requirment").select("Must have VISA",{force: true})
+        cy.get("#additional_requirment").select("Must have VISA", { force: true })
         cy.get("#min_year_exp").select("3", { force: true })
         cy.get("#education").type("Bachelors in Computer Science")
         cy.get("#remotetype").select("Flexible")
         cy.get("#cv_required").click()
         cy.get("#is_references_required").click()
-        cy.get(".tab-pane div:nth-child(5) div:nth-child(2) a").click()
+        cy.get("#requirement-content div:nth-child(6) div:nth-child(2) a").click()
     }
     about() {
         cy.get("#company").clear()
@@ -96,7 +111,7 @@ export class JobApply_Company {
         cy.get("#first_name").type("Adam", { force: true })
         cy.get("#last_name").type("Junior", { force: true })
         let num = Math.floor(Math.random() * 1000);
-        cy.get('#user-job-signup-form > :nth-child(2) > #email').type("adamjunior"+num+"@mailinator.com", { force: true })
+        cy.get('#user-job-signup-form > :nth-child(2) > #email').type("adamjunior" + num + "@mailinator.com", { force: true })
         cy.get(':nth-child(3) > .select2-container > .selection > .select2-selection > .select2-selection__rendered > .select2-search > .select2-search__field').click()
         cy.get(".select2-results__options li:nth-child(10)").click()
         cy.get("#Password").type("testing@123456", { force: true })
@@ -123,18 +138,18 @@ export class JobApply_Company {
 
 }
 export class JobApply_User {
-    applyForjob(){
+    applyForjob() {
         cy.get("#recent-job-invites div:nth-child(5) div:nth-child(1) div:nth-child(1) div:nth-child(3) ul li ul a").should('have.attr', 'target', '_blank').invoke('removeAttr', 'target').click({ force: true })
         //cy.get('.container-fluid > .job-preview-wrap > .card > .card-body > .preview-form-details > .detail-listing > .pt-3 > .actions-div > .content-wrap > .pt-2 > #apply-job-form > #user-job-apply-btn').click()
 
     }
 }
-export class JobApplications{
-    sms(){
-       cy.get(".navigation ul li:nth-child(2) a[href='/company/recent-applicants']").click()
-       cy.get("#recent_candiadte tbody tr:nth-child(1) td:last-child a:nth-child(1)").click() 
-       cy.get('[style="display: block;"] > .modal-dialog > .modal-content > .modal-body > #chat-form-global > :nth-child(1) > #messageform-global').type("Thank you for taking the time to apply for our [title] position. Below is a small test we would like you to tackle which should take no more than 20 minutes. This will help us to understand the way you work and also give us some insight into your skills.")
-       cy.get('[style="display: block;"] > .modal-dialog > .modal-content > .modal-body > #chat-form-global > :nth-child(2) > .btn').click()
-       cy.click(1210,200)
+export class JobApplications {
+    sms() {
+        cy.get(".navigation ul li:nth-child(2) a[href='/company/recent-applicants']").click()
+        cy.get("#recent_candiadte tbody tr:nth-child(1) td:last-child a:nth-child(1)").click()
+        cy.get('[style="display: block;"] > .modal-dialog > .modal-content > .modal-body > #chat-form-global > :nth-child(1) > #messageform-global').type("Thank you for taking the time to apply for our [title] position. Below is a small test we would like you to tackle which should take no more than 20 minutes. This will help us to understand the way you work and also give us some insight into your skills.")
+        cy.get('[style="display: block;"] > .modal-dialog > .modal-content > .modal-body > #chat-form-global > :nth-child(2) > .btn').click()
+        cy.click(1210, 200)
     }
 }

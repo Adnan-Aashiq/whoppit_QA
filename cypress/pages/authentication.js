@@ -116,17 +116,17 @@ export class Login {
         cy.get("#custom_message").type("Thanks for asking! I don’t have anything else to add. I feel like we covered the important topics, and I was able to share the key pieces of my background and how they’d help me perform well in the role. It was great learning about the role, and the opportunity to do XYZ in this position sounds especially interesting. What are the next steps in the process?")
         cy.get("#sendReferenceReq").click()
     }
-    login(usertype) {
+    login(usertype,email,password) {
         cy.visit("https://dev.whoppit.com")
         if (usertype == 'user') {
-            cy.get("#email").type('testuser37@mailinator.com')
-            cy.get("#password").type('Testinguser@37.')
+            cy.get("#email").type(email)
+            cy.get("#password").type(password)
             cy.get("#"+usertype+"-login-btn").click()
         }
         else if (usertype == 'company') {
             cy.get("#login-box a").click()
-            cy.get("#email").type('alex.ramsdale@icloud.com')
-            cy.get("#password").type("testing@123456")
+            cy.get("#email").type(email)
+            cy.get("#password").type(password)
             cy.get("#"+usertype+"-login-btn").click()
         }
     }

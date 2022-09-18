@@ -15,7 +15,7 @@ describe('Authetication for new User',()=>{
         loginobj.signupFormStep4()
     })
     it('Edit Company Profile',()=>{
-        loginobj.login("company")
+        loginobj.login("company","alex.ramsdale@icloud.com","testing@123456")
         userprofileobj.editCompanyProfile()
     })
     it.only('Change password Company Profile',()=>{
@@ -36,12 +36,12 @@ describe('Authetication for new User',()=>{
     })
     it('Edit Users Profile',()=>{
         cy.viewport(1200,800)
-        loginobj.login("user")
+        loginobj.login("user","testuser37@mailinator.com","Testinguser@37.")
         userprofileobj.editUserProfile()
     })
     it('Change password Users Profile',()=>{
         cy.viewport(1200,800)
-        loginobj.login("user")
+        loginobj.login("user","testuser37@mailinator.com","Testinguser@37.")
         userprofileobj.changePassowrd('user')
     })
 })
