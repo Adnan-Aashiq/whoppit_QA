@@ -117,7 +117,7 @@ export class Login {
         cy.get("#sendReferenceReq").click()
     }
     login(usertype,email,password) {
-        cy.visit("https://dev.whoppit.com")
+        cy.visit("https://dev.whoppit.com/user/login")
         if (usertype == 'user') {
             cy.get("#email").type(email)
             cy.get("#password").type(password)

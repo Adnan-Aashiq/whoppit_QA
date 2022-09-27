@@ -10,7 +10,7 @@ describe('DashBoard sections testing', () => {
     beforeEach(() => {
         cy.viewport(1200, 800)
     })
-    it.only('Dashboard data testing by User Company', () => {
+    it('Dashboard data testing by User Company', () => {
         loginobj.login("company","alex.ramsdale@icloud.com","testing@123456")
         dashboardobj.dashboardTesting()
     })

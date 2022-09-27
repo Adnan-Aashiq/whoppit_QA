@@ -6,13 +6,15 @@ export class CreateJob_Company {
         cy.get("#select2-advert_job_title-container").click()
         cy.get(".select2-results__options li:nth-child(1) .select2-results__options.select2-results__options--nested li:nth-child(1)").click()
         cy.get("#postcode").type("123456", { force: true })
-        cy.get(":nth-child(5) > .form-group > .form-group-inner > .tw-items-center").type("no digs" + "{enter}")
+
+        //Generic Job Details field
+        //cy.get(":nth-child(5) > .form-group > .form-group-inner > .tw-items-center").type("no digs" + "{enter}")
         cy.get("#select2-advert_industry-container").click()
         cy.get(".select2-results__options li:nth-child(2)").click()
         cy.get(':nth-child(2) > :nth-child(2) > .form-group-inner > .tw-items-center > .right-field > .field-wrap > .select2 > .selection > .select2-selection').click()
         let num = Math.floor(Math.random() * 10 + 1);
         cy.get('.select2-dropdown > .select2-search > .select2-search__field').type("new")
-        cy.wait(3000)
+        cy.wait(1500)
         cy.get(".select2-results__options li:nth-child(" + num + ")").click()
         cy.get("#job_refreneces").type("Production Assistant")
         cy.get(".note-editable.card-block p").type("We are looking for a farmer to oversee our farming operations. The responsibilities of a Farmer include performing physical labor, operating heavy machinery, and supervising farm workers.")
@@ -39,13 +41,12 @@ export class CreateJob_Company {
 
         cy.get("#terms-content div:nth-child(3) div:first-child .tw-flex.tw-gap-x-2.tw-justify-between button").then(($element) => {
             var classValue = $element.attr('class')
-            //var classValuetrimmed = classValue.replace(/\s+/g, '')
-            var finalval= classValue.split('-').pop()
+            var finalval = classValue.split('-').pop()
             cy.log(finalval)
-            if (finalval==='plus') {
+            if (finalval === 'plus') {
                 cy.get("#define_hrs_btn").click()
             }
-            else if (finalval==='minus') {
+            else if (finalval === 'minus') {
             }
             cy.get("#hours").select("8")
             cy.get("#hours_from").type("10:10")
@@ -84,22 +85,43 @@ export class CreateJob_Company {
         cy.get("#company").type("TestingCompany1")
         cy.get("#company_email").clear()
         cy.get("#company_email").type("testuser@mailinator.com")
+        cy.get("#company_phone").clear()
         cy.get("#company_phone").type("+442589366852")
         cy.get("input[type='file']").attachFile("pic1.jpg")
         cy.get(".tab-pane.fade.active.show div:nth-child(3) div:nth-child(2) a").click()
     }
-    share() {
+    jobBoards() {
         cy.get("#job-boards-prem tr:nth-child(2) td:nth-child(2) label").click()
-        //cy.get("#job-boards-prem tr:nth-child(2) td:nth-child(3) label").click()
-        cy.get("#job-boards-prem tr:nth-child(3) td:nth-child(2) label").click()
-        //cy.get("#job-boards-prem tr:nth-child(3) td:nth-child(3) label").click()
-        cy.get("#job-boards-prem tr:nth-child(4) td:nth-child(2) label").click()
-        //cy.get("#job-boards-prem tr:nth-child(4) td:nth-child(3) label").click()
-
+        //cy.get("#job-boards-prem tr:nth-child(3) td:nth-child(2) label").click()
+        //cy.get("#job-boards-prem tr:nth-child(4) td:nth-child(2) label").click()
         cy.get("#message-content div:last-child div:last-child a[href='#message-tab']").click()
-        cy.get('#share-content div:last-child div:last-child #preview-JobBoard-btn').click()
-        cy.get("#go_back_preview").click()
     }
+    socialMedia() {
+        cy.get("#social_textarea").clear()
+        cy.get('#share-content div:last-child div:last-child #preview-JobBoard-btn').click()
+    }
+    jobPostBilling() {
+        cy.get('[style="padding-right: 5px; display: block;"] > .modal-dialog > .modal-content > #advert-preview-modal-body > .new-design > .floating-contact-btn > .container-fluids > .bottom-bar-float > #post_a_advert').click()
+        cy.wait(3000)
+        cy.get('iframe').then($iframe => {
+            const body = $iframe.contents().find('body')
+            cy.wrap(body).as('iframe')
+            //cy.get('@iframe').find('')
+        })
+        // cy.url().then(url => {
+        //     if(url==="https://dev.whoppit.com/company/post-advert/success/373?autofill=1"){
+        //         cy.get(".card-body.text-center.p-4 h2:nth-child(2)").should('have.text','Success - your job is being processed!')
+        //     }
+        //     else{
+        //         cy.get('iframe').then($iframe=>{
+        //             const body = $iframe.contents().find('body')
+        //             cy.wrap(body).as('iframe')
+        //             //cy.get('@iframe').find('')
+        //         })
+        //     }
+        //   });
+    }
+
 }
 export class JobApply_Company {
     miscellaneous() {

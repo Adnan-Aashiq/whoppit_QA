@@ -18,7 +18,7 @@ describe('Authetication for new User',()=>{
         loginobj.login("company","alex.ramsdale@icloud.com","testing@123456")
         userprofileobj.editCompanyProfile()
     })
-    it.only('Change password Company Profile',()=>{
+    it('Change password Company Profile',()=>{
         cy.viewport(1200,800)
         loginobj.login("company")
         userprofileobj.changePassowrd('company')
