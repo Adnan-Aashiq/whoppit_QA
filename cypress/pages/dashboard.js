@@ -30,8 +30,7 @@ export class Dashboard{
         cy.get(".social-media h3").should('have.text','Social Media')
         cy.get(".team-users-wrap h3").should('have.text','Team Users')
         cy.get(".news-section-wrap h3").should('have.text','News Top Stories')
-
-
     }
+    
     
 }

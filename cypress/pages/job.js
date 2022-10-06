@@ -1,4 +1,5 @@
 /// <reference types="cypress"/>
+///<reference types="cypress-iframe" />
 
 export class CreateJob_Company {
     basic() {
@@ -101,25 +102,14 @@ export class CreateJob_Company {
         cy.get('#share-content div:last-child div:last-child #preview-JobBoard-btn').click()
     }
     jobPostBilling() {
-        cy.get('[style="padding-right: 5px; display: block;"] > .modal-dialog > .modal-content > #advert-preview-modal-body > .new-design > .floating-contact-btn > .container-fluids > .bottom-bar-float > #post_a_advert').click()
         cy.wait(3000)
-        cy.get('iframe').then($iframe => {
-            const body = $iframe.contents().find('body')
-            cy.wrap(body).as('iframe')
-            //cy.get('@iframe').find('')
+        cy.get('[style="padding-right: 5px; display: block;"] > .modal-dialog > .modal-content > #advert-preview-modal-body > .new-design > .floating-contact-btn > .container-fluids > .bottom-bar-float > #post_a_advert').click({ force: true })
+
+        cy.get("iframe[name*='__privateStripeFrame']").eq(0).iframe(() => {
+            cy.get('#root .ElementsApp div:first-child div:nth-child(2) span:nth-child(1)').type('424242424242424242424242424')
         })
-        // cy.url().then(url => {
-        //     if(url==="https://dev.whoppit.com/company/post-advert/success/373?autofill=1"){
-        //         cy.get(".card-body.text-center.p-4 h2:nth-child(2)").should('have.text','Success - your job is being processed!')
-        //     }
-        //     else{
-        //         cy.get('iframe').then($iframe=>{
-        //             const body = $iframe.contents().find('body')
-        //             cy.wrap(body).as('iframe')
-        //             //cy.get('@iframe').find('')
-        //         })
-        //     }
-        //   });
+        cy.get('#premium_plan_pay_btn').click()
+
     }
 
 }
