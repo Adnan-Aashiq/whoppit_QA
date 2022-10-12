@@ -17,13 +17,13 @@ describe('Job posting and applying', () => {
         cy.viewport(1200, 800)
     })
     it.only('Create a Job Post By Company', () => {
-        loginobj.login('company', "sbisht+demo2@whoppit.com", "testing@12345")
+        loginobj.login('company', "sbisht+demo1@whoppit.com", "testing@12345")
         cy.get(".navigation a[href*='/company/post-free-advert']").click({ force: true })
         createjobcompanyobj.basic()
         createjobcompanyobj.terms()
         createjobcompanyobj.requirement()
         createjobcompanyobj.about()
-        createjobcompanyobj.jobBoards()
+        createjobcompanyobj.jobBoards('CV_LIB')
         createjobcompanyobj.socialMedia()
         createjobcompanyobj.jobPostBilling()
         
