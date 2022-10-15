@@ -7,6 +7,9 @@ const loginobj = new Login()
 const userprofileobj = new UserProfile()
 
 describe('Authetication for new User',()=>{
+    beforeEach(() => {
+        cy.viewport(1200, 800)
+    })
     it('Registration form for company profile',()=>{
         loginobj.registration("company")
         loginobj.selectingOrganization()
@@ -14,13 +17,15 @@ describe('Authetication for new User',()=>{
         loginobj.clickOnCompany()
         loginobj.signupFormStep4()
     })
+    it.only('Forgot password company Profile',()=>{
+        loginobj.forgotPassword("company")
+    })
     it('Edit Company Profile',()=>{
         loginobj.login("company","alex.ramsdale@icloud.com","testing@123456")
         userprofileobj.editCompanyProfile()
     })
-    it('Change password Company Profile',()=>{
-        cy.viewport(1200,800)
-        loginobj.login("company")
+    it.only('Change password Company Profile',()=>{
+        loginobj.login("company","alex.ramsdale@icloud.com","testing@123456")
         userprofileobj.changePassowrd('company')
     })
     it('Registration form for Jobseeker profile',()=>{
@@ -31,16 +36,13 @@ describe('Authetication for new User',()=>{
         loginobj.step5user()
     })
     it('Forgot password Users Profile',()=>{
-        cy.viewport(1200,800)
         loginobj.forgotPassword("user")
     })
     it('Edit Users Profile',()=>{
-        cy.viewport(1200,800)
         loginobj.login("user","testuser37@mailinator.com","Testinguser@37.")
         userprofileobj.editUserProfile()
     })
     it('Change password Users Profile',()=>{
-        cy.viewport(1200,800)
         loginobj.login("user","testuser37@mailinator.com","Testinguser@37.")
         userprofileobj.changePassowrd('user')
     })

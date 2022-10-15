@@ -81,7 +81,6 @@ export class UserProfile {
         else if (usertype == 'company') {
             password = 'testing@123456'
         }
-        //let newpassword = 'testing@123456'
         cy.log(password)
         cy.get("#oldpassword").type(password)
         cy.get("#newpassword").type(password)

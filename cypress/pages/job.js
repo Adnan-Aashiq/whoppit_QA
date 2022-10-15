@@ -205,10 +205,9 @@ export class JobApply_User {
 }
 export class JobApplications {
     sms() {
-        cy.get(".navigation ul li:nth-child(2) a[href='/company/recent-applicants']").click()
+        cy.get(".navigation ul li:nth-child(2) a[href='/company/recent-applicants']").click({force:true})
         cy.get("#recent_candiadte tbody tr:nth-child(1) td:last-child a:nth-child(1)").click()
-        cy.get('[style="display: block;"] > .modal-dialog > .modal-content > .modal-body > #chat-form-global > :nth-child(1) > #messageform-global').type("Thank you for taking the time to apply for our [title] position. Below is a small test we would like you to tackle which should take no more than 20 minutes. This will help us to understand the way you work and also give us some insight into your skills.")
-        cy.get('[style="display: block;"] > .modal-dialog > .modal-content > .modal-body > #chat-form-global > :nth-child(2) > .btn').click()
-        cy.click(1210, 200)
+        cy.get('[style="padding-right: 5px; display: block;"] > .modal-dialog > .modal-content > .modal-body > #chat-form-global > :nth-child(1) > #messageform-global').type("Thank you for taking the time to apply for our [title] position. Below is a small test we would like you to tackle which should take no more than 20 minutes. This will help us to understand the way you work and also give us some insight into your skills.")
+        cy.get('[style="padding-right: 5px; display: block;"] > .modal-dialog > .modal-content > .modal-body > #chat-form-global > :nth-child(2) > .btn').click()
     }
 }

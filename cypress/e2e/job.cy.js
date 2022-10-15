@@ -1,10 +1,7 @@
 /// <reference types="cypress"/>
 
 import { Login } from "../pages/authentication"
-import { CreateJob_Company } from "../pages/job"
-import { JobApply_Company } from "../pages/job"
-import { JobApply_User } from "../pages/job"
-import { JobApplications } from "../pages/job"
+import { CreateJob_Company, JobApply_Company, JobApply_User,JobApplications  } from "../pages/job"
 
 const loginobj = new Login()
 const createjobcompanyobj = new CreateJob_Company()
@@ -16,8 +13,8 @@ describe('Job posting and applying', () => {
     beforeEach(() => {
         cy.viewport(1200, 800)
     })
-    it.only('Create a Job Post By Company', () => {
-        loginobj.login('company', "sbisht+demo1@whoppit.com", "testing@12345")
+    it('Create a Job Post By Company', () => {
+        loginobj.login('company', "sbisht+demo2@whoppit.com", "testing@12345")
         cy.get(".navigation a[href*='/company/post-free-advert']").click({ force: true })
         createjobcompanyobj.basic()
         createjobcompanyobj.terms()
@@ -45,7 +42,7 @@ describe('Job posting and applying', () => {
         loginobj.login('user')
         jobapplyuserobj.applyForjob()
     })
-    it('SMS to Job Applicants By Company profiler', () => {
+    it.only('SMS to Job Applicants By Company profiler', () => {
         loginobj.login('company', "alex.ramsdale@icloud.com", "testing@123456")
         jobapplicationsObj.sms()
 
