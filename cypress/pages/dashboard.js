@@ -112,4 +112,11 @@ export class Dashboard{
         cy.get('.left-bar-bottom h4').should('have.attr', 'id', 'company-name')
 
     }
+    billingSection(){
+        cy.get('#company-left-side-bar li:nth-child(7) span').should('have.text','Billing')
+        cy.get('#company-left-side-bar li:nth-child(7) a').should('have.attr', 'href', '/company/billing')
+        cy.intercept('**/billing').as("billing_Button_response")
+        cy.get('#company-left-side-bar li:nth-child(7) a').click({force: true})
+        cy.wait('@billing_Button_response').its('response.statusCode').should('eq', 200)
+    }
 }

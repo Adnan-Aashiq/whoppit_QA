@@ -160,6 +160,7 @@ export class CreateJob_Company {
     }
 
 }
+
 export class JobApply_Company {
     miscellaneous() {
         cy.get(".navigation ul li:nth-child(3) a[href='/company/manage-jobs']").click()
