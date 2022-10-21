@@ -119,4 +119,12 @@ export class Dashboard{
         cy.get('#company-left-side-bar li:nth-child(7) a').click({force: true})
         cy.wait('@billing_Button_response').its('response.statusCode').should('eq', 200)
     }
+    mtuSection(){
+        cy.get('#company-left-side-bar li:nth-child(4) span').should('have.text','Manage team users')
+        cy.get('#company-left-side-bar li:nth-child(4) a').should('have.attr', 'href', '/company/manage-team-users')
+        cy.intercept('**/manage-team-users').as("manage_team_users_Button_response")
+        cy.get('#company-left-side-bar li:nth-child(4) a').click({force: true})
+        cy.wait('@manage_team_users_Button_response').its('response.statusCode').should('eq', 200)
+    }
+    
 }
