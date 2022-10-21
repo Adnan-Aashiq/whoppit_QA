@@ -1,5 +1,7 @@
 /// <reference types="cypress"/>
 
+
+
 import { Login } from "../pages/authentication"
 import { CreateJob_Company, JobApply_Company, JobApply_User,JobApplications  } from "../pages/job"
 
@@ -13,8 +15,8 @@ describe('Job posting and applying', () => {
     beforeEach(() => {
         cy.viewport(1200, 800)
     })
-    it('Create a Job Post By Company', () => {
-        loginobj.login('company', "sbisht+demo2@whoppit.com", "testing@12345")
+    it.only('Create a Job Post By Company', () => {
+        loginobj.login('company', "sbisht+demo1@whoppit.com", "testing@12345")
         cy.get(".navigation a[href*='/company/post-free-advert']").click({ force: true })
         createjobcompanyobj.basic()
         createjobcompanyobj.terms()

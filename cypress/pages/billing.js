@@ -1,6 +1,87 @@
 /// <reference types="cypress"/>
 
 export class Billing {
+    billing_screen() {
+        //Billing Details Section
+        cy.get(':nth-child(1) > .section-heading').should('have.text', 'Billing Details')
+
+        cy.get(':nth-child(2) > :nth-child(1) > .card-body > .media > .media-body > .mt-0').should('have.text', 'Card Details')
+        cy.get('#card-listing-tbl > tbody > :nth-child(1) > :nth-child(1)').should('have.text', 'Card Number')
+        cy.get('#card-listing-tbl > tbody > :nth-child(1) > :nth-child(2)').should('have.text', 'Expiry Date')
+        cy.get('#card-listing-tbl > tbody > :nth-child(1) > :nth-child(3)').should('have.text', 'Action')
+
+        cy.get(':nth-child(2) > .card-body > .media > .media-body > .row > :nth-child(1) > .mt-0').should('have.text', 'Licences')
+        cy.get('.media-body > .row > label').should('have.text', 'whoppit Pro')
+
+        cy.get('.col-sm-4 > .mt-0').should('have.text', 'Credits')
+        cy.get('#credit_table > tr > :nth-child(1)').should('have.text', 'Name')
+        cy.get('#credit_table > tr > :nth-child(2)').should('have.text', 'Quantity')
+
+        //Subscription Section
+        cy.get(':nth-child(3) > .section-heading').should('have.text', 'Subscription')
+
+        cy.get('#planlisting > :nth-child(1) > .card-body > .media > .media-body > .font-size-16').should('have.text', 'Free Plan')
+        cy.get(':nth-child(1) > .card-body > .media > .media-body > h2.mt-0').should('have.text', '£ 0 /month')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(1) > strong').should('have.text', " ATS - View & hire Jobseekers")
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(2) > strong').should('have.text', ' Auto CV Parsing')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(3) > strong').should('have.text', ' Bulk Contact Messaging')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(4) > strong').should('have.text', ' CRM Integrations')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(5) > strong').should('have.text', ' Dedicated Account Manager')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(6) > strong').should('have.text', ' Job Ad Multi-Posting')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(7) > strong').should('have.text', ' Largest Discounts on Premium Ads')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(8) > strong').should('have.text', ' Phone Support')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(9) > strong').should('have.text', ' Post jobs to our network')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(10) > strong').should('have.text', ' Reports & Analytics')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(11) > strong').should('have.text', '0 SMS & Email Credits/Month')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(12) > strong').should('have.text', ' Unlimited Contact Storage')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(13) > strong').should('have.text', '0 User Licence')
+
+        cy.get('.price-plan-highlight > .card-body > .media > .media-body > .font-size-16').should('have.text', 'Pro Plan')
+        cy.get('.price-plan-highlight > .card-body > .media > .media-body > h2.mt-0').should('have.text', '£ 29 /month')
+        // cy.get('.price-plan-highlight > .card-body > .card-pricing-features > :nth-child(1) > strong').should('have.text', 'ATS - View & hire Jobseekers')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(2) > strong').should('have.text', ' Auto CV Parsing')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(3) > strong').should('have.text', ' Bulk Contact Messaging')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(4) > strong').should('have.text', ' CRM Integrations')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(5) > strong').should('have.text', ' Dedicated Account Manager')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(6) > strong').should('have.text', ' Job Ad Multi-Posting')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(7) > strong').should('have.text', ' Largest Discounts on Premium Ads')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(8) > strong').should('have.text', ' Phone Support')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(9) > strong').should('have.text', ' Post jobs to our network')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(10) > strong').should('have.text', ' Reports & Analytics')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(11) > strong').should('have.text', '300 SMS & Email Credits/Month')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(12) > strong').should('have.text', ' Unlimited Contact Storage')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(13) > strong').should('have.text', '1 User Licence')
+
+        cy.get(':nth-child(3) > .card-body > .media > .media-body > .font-size-16').should('have.text', 'Enterprise Plan')
+        cy.get('.price-plan-highlight > .card-body > .media > .media-body > h2.mt-0').should('have.text', '£ 29 /month')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(1) > strong').should('have.text', ' ATS - View & hire Jobseekers')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(2) > strong').should('have.text', ' Auto CV Parsing')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(3) > strong').should('have.text', ' Bulk Contact Messaging')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(4) > strong').should('have.text', ' CRM Integrations')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(5) > strong').should('have.text', ' Dedicated Account Manager')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(6) > strong').should('have.text', ' Job Ad Multi-Posting')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(7) > strong').should('have.text', ' Largest Discounts on Premium Ads')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(8) > strong').should('have.text', ' Phone Support')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(9) > strong').should('have.text', ' Post jobs to our network')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(10) > strong').should('have.text', ' Reports & Analytics')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(11) > strong').should('have.text', '3000 SMS & Email Credits/Month')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(12) > strong').should('have.text', ' Unlimited Contact Storage')
+        // cy.get(':nth-child(1) > .card-body > .card-pricing-features > :nth-child(13) > strong').should('have.text', '10 User Licence')
+
+        //FAQs Section
+        cy.get(':nth-child(6) > .section-heading').should('have.text', 'FAQs')
+        //cy.get('#headingOne > .mb-0 > .btn').should('have.text', ' How is whoppit secure? ')
+        //cy.get('#collapseOne > .card-body').should('have.text', "We do not store any card details on whoppit. We use 'Stripe' that Stripe has been audited by a PCI-certified auditor and is certified to PCI Service Provider Level 1. This is the most stringent level of certification available in the payments industry. To accomplish this, they use the best-in-class security tools and practices to maintain a high level of security.We only store basic details about yourself and this is never passed onto third practices.")
+        //cy.get('#headingTwo > .mb-0 > .btn').should('have.text', 'Can I cancel at any time?')
+        cy.get('#headingTwo > .mb-0 > .btn').click()
+        //cy.get('#collapseTwo > .card-body').should('have.text', "We do not store any card details on whoppit. We use 'Stripe' that Stripe has been audited by a PCI-certified auditor and is certified to PCI Service Provider Level 1. This is the most stringent level of certification available in the payments industry. To accomplish this, they use the best-in-class security tools and practices to maintain a high level of security.We only store basic details about yourself and this is never passed onto third practices.")
+        //cy.get(':nth-child(3) > #headingThree > .mb-0 > .btn').should('have.text', 'Do whoppit credits rollover to the next month?')
+        cy.get(':nth-child(3) > #headingThree > .mb-0 > .btn').click()
+        //cy.get(':nth-child(3) > #collapseThree > .card-body').should('have.text', 'No. whoppit credits do not roll over each month. ')
+        //cy.get(':nth-child(4) > #headingThree > .mb-0 > .btn').should('have.text', 'What are the benefits of whoppit Pro?')
+        cy.get(':nth-child(4) > #headingThree > .mb-0 > .btn').click()
+        //cy.get(':nth-child(4) > #collapseThree > .card-body').should('have.text', 'There are many. We charge the Subscription so we can guarantee a high level of service and offset some of our costs at the same time.')
+    }
     upgradte_Plan() {
         cy.contains('Upgrade Plan to').click()
         cy.wait(3000)

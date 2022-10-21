@@ -14,8 +14,9 @@ describe('Billing Section testing',()=>{
         loginobj.login('company', "sbisht+demo2@whoppit.com", "testing@12345")
         dashboardobj.billingSection()
     })
-    it('Change Subscription from billing section',()=>{
-        billingobj.upgradte_Plan()
+    it.only('Change Subscription from billing section',()=>{
+        billingobj.billing_screen()
+        //billingobj.upgradte_Plan()
     })
     it('Add users from billing section',()=>{
         billingobj.add_user()
