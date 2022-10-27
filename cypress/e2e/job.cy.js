@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 
+cy.get('#select2-company_roles-container').select('')
 
 
 import { Login } from "../pages/authentication"

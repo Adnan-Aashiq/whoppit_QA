@@ -1,4 +1,4 @@
-/// <reference types="cypress"/>
+///<reference types="cypress"/>
 ///<reference types="cypress-iframe" />
 
 
@@ -15,7 +15,7 @@ export class CreateJob_Company {
 
         //Job Title
         cy.get("#select2-advert_job_title-container").click()
-        cy.get(".select2-results__options li:nth-child(1) .select2-results__options.select2-results__options--nested li:nth-child(" + num + ")").click()
+        cy.get("z").click()
 
         //Location
         cy.get(':nth-child(2) > :nth-child(2) > .form-group-inner > .tw-items-center > .right-field > .field-wrap > .select2 > .selection > .select2-selection').click()

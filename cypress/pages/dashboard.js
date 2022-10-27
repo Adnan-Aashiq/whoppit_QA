@@ -60,18 +60,10 @@ export class Dashboard{
         cy.wait('@social_media_sync_Button_response').its('response.statusCode').should('eq', 200)
 
         //Manage Jobs board Button link and text testing
-        cy.get('#company-left-side-bar li:nth-child(3) span').should('have.text','Manage Jobs board')
-        cy.get('#company-left-side-bar li:nth-child(3) a').should('have.attr', 'href', '/company/manage-job-boards')
-        cy.intercept('**/manage-job-boards').as("manage_jobs_board_Button_response")
-        cy.get('#company-left-side-bar li:nth-child(3) a').click({force: true})
-        cy.wait('@manage_jobs_board_Button_response').its('response.statusCode').should('eq', 200)
+        this.mjbSection()
 
         //Manage team users Button link and text testing
-        cy.get('#company-left-side-bar li:nth-child(4) span').should('have.text','Manage team users')
-        cy.get('#company-left-side-bar li:nth-child(4) a').should('have.attr', 'href', '/company/manage-team-users')
-        cy.intercept('**/manage-team-users').as("manage_team_users_Button_response")
-        cy.get('#company-left-side-bar li:nth-child(4) a').click({force: true})
-        cy.wait('@manage_team_users_Button_response').its('response.statusCode').should('eq', 200)
+        this.mtuSection()
 
         //Jobs board Button link and text testing
         cy.get('#company-left-side-bar li:nth-child(5) span').should('have.text','Jobs boards')
@@ -81,21 +73,12 @@ export class Dashboard{
         cy.wait('@jobs_board_Button_response').its('response.statusCode').should('eq', 200)
 
         //Settings Button link and text testing
-        cy.get('#company-left-side-bar li:nth-child(6) span').should('have.text','Settings')
-        cy.get('#company-left-side-bar li:nth-child(6) a').should('have.attr', 'href', '/company/settings')
-        cy.intercept('**/settings').as("settings_Button_response")
-        cy.get('#company-left-side-bar li:nth-child(6) a').click({force: true})
-        cy.wait('@settings_Button_response').its('response.statusCode').should('eq', 200)
-
+        this.setting()
         //Billing Button link and text testing
-        cy.get('#company-left-side-bar li:nth-child(7) span').should('have.text','Billing')
-        cy.get('#company-left-side-bar li:nth-child(7) a').should('have.attr', 'href', '/company/billing')
-        cy.intercept('**/billing').as("billing_Button_response")
-        cy.get('#company-left-side-bar li:nth-child(7) a').click({force: true})
-        cy.wait('@billing_Button_response').its('response.statusCode').should('eq', 200)
+        this.billingSection()
 
         //CRM Integration Button link and text testing
-        cy.get('#company-left-side-bar li:nth-child(9) span').should('have.text','CRM Integration')
+        cy.get('#company-left-side-bar li:nth-child(9) span').should('have.text','Integration')
         cy.get('#company-left-side-bar li:nth-child(9) a').should('have.attr', 'href', '/company/crm-integrations')
         cy.intercept('**/crm-integrations').as("crm_integrations_board_Button_response")
         cy.get('#company-left-side-bar li:nth-child(9) a').click({force: true})
@@ -126,5 +109,18 @@ export class Dashboard{
         cy.get('#company-left-side-bar li:nth-child(4) a').click({force: true})
         cy.wait('@manage_team_users_Button_response').its('response.statusCode').should('eq', 200)
     }
-    
+    mjbSection(){
+        cy.get('#company-left-side-bar li:nth-child(3) span').should('have.text','Manage Jobs board')
+        cy.get('#company-left-side-bar li:nth-child(3) a').should('have.attr', 'href', '/company/manage-job-boards')
+        cy.intercept('**/manage-job-boards').as("manage_jobs_board_Button_response")
+        cy.get('#company-left-side-bar li:nth-child(3) a').click({force: true})
+        cy.wait('@manage_jobs_board_Button_response').its('response.statusCode').should('eq', 200)
+    }
+    setting(){
+        cy.get('#company-left-side-bar li:nth-child(6) span').should('have.text','Settings')
+        cy.get('#company-left-side-bar li:nth-child(6) a').should('have.attr', 'href', '/company/settings')
+        cy.intercept('**/settings').as("settings_Button_response")
+        cy.get('#company-left-side-bar li:nth-child(6) a').click({force: true})
+        cy.wait('@settings_Button_response').its('response.statusCode').should('eq', 200)
+    }
 }
