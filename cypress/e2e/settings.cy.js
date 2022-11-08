@@ -16,5 +16,7 @@ describe('Settings Section testing', () => {
     })
     it('Setting sections components testing', () => {
         settingssobj.basic_settings()
+        //have to delete Pending Lane if exist before running the test
+        settingssobj.job_applications()
     })
 })

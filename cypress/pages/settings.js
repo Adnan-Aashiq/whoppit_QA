@@ -12,4 +12,32 @@ export class Settings {
         //cy.get(':nth-child(2) > :nth-child(3) > span').should('have.text', "Allow 'registered' Jobseeker to call the company to apply for a job")
         cy.get('#myTabContent .card div:nth-child(2) div:nth-child(2) div:nth-child(3) #send_call_to_registered_jobseeker').click({force: true})
     }
+    job_applications(){
+        cy.get("#job-application-tab").click()
+
+        //Create New lane
+        cy.get("#create_new_lane").click()
+        cy.get("#save_new_lane").click()
+        cy.get('#label-error').should('have.text', 'This field is required.')
+
+        cy.get(".required.error").type('Pending')
+        cy.get('#create-job-lane-form > :nth-child(2) > .form-control').type('It means that your application has not been approved yet, awaiting decision')
+        cy.get("#save_new_lane").click()
+
+        cy.get('#company-left-side-bar li:nth-child(6) a').click({force: true})
+        let result;
+        cy.get("#job-application-tab").click()
+        cy.get("div[id*='job-lane-'] .header-elements input").each(($element)=>{
+            var val =$element.attr('value')
+            if(val==='Pending'){
+                result ='Find';
+                cy.log(result)
+            }
+            else{
+            }
+        }).then(()=>{
+            expect(result).to.eq('Find');
+        })
+    }
+
 }
