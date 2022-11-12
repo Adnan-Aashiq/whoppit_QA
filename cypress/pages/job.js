@@ -11,29 +11,43 @@ export class CreateJob_Company {
 
         //Industry
         cy.get("#select2-advert_industry-container").click()
-        cy.get(".select2-results__options li:nth-child(" + num + ")").click()
+        cy.wait(3000)
+        cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
+            return Cypress._.random(0, n - 1)
+        }).then((k) => {
+            cy.get('.select2-results li').eq(k).dblclick({ force: true });
+        })
 
         //Job Title
         cy.get("#select2-advert_job_title-container").click()
-        cy.get("z").click()
+        cy.wait(3000)
+        cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
+            return Cypress._.random(0, n - 1)
+        }).then((k) => {
+            cy.get('.select2-results li').eq(k).dblclick({ force: true });
+        })
 
         //Location
         cy.get(':nth-child(2) > :nth-child(2) > .form-group-inner > .tw-items-center > .right-field > .field-wrap > .select2 > .selection > .select2-selection').click()
         cy.get('.select2-dropdown > .select2-search > .select2-search__field').type("new")
-        cy.wait(1000)
-        cy.get(".select2-results__options li:nth-child(" + num + ")").click()
+        cy.wait(3000)
+        cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
+            return Cypress._.random(0, n - 1)
+        }).then((k) => {
+            cy.get('.select2-results li').eq(k).dblclick({ force: true });
+        })
 
         //Postcode
         // cy.get("#postcode").type("123456", { force: true })
 
         //Your Job Reference
-        cy.get("#job_refreneces").type("Production Assistant")
+        //cy.get("#job_refreneces").type("Production Assistant")
 
         //Generic Job Details field
         //cy.get(":nth-child(5) > .form-group > .form-group-inner > .tw-items-center").type("no digs" + "{enter}")
 
         //Description
-        // cy.get(".note-editable.card-block p").type("We are looking for a farmer to oversee our farming operations. The responsibilities of a Farmer include performing physical labor, operating heavy machinery, and supervising farm workers.")
+        cy.get(".note-editable.card-block p").type("The Customer Service Supervisor will oversee and assist customer service employees in the performance of their job duties such as responding to customer inquiries and resolving issues or complaints.")
 
         //Next Button
         cy.get(".tab-pane.fade.show.active > div:nth-child(7) a").click()
@@ -46,7 +60,12 @@ export class CreateJob_Company {
 
         //Job Type
         cy.get("#select2-job_type-container").click()
-        cy.get(".select2-results__options li:nth-child(" + num + ")").click()
+        cy.wait(3000)
+        cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
+            return Cypress._.random(0, n - 1)
+        }).then((k) => {
+            cy.get('.select2-results li').eq(k).dblclick({ force: true });
+        })
 
         //ASAP Check
         cy.get("#start_asap").click()
@@ -65,9 +84,15 @@ export class CreateJob_Company {
         cy.get("#is_salary_based_exp").click()
 
         //Salary 
+        cy.get("#salary").clear()
         cy.get("#salary").type("1200")
         cy.get("#select2-salarytype-container").click()
-        cy.get(".select2-results__options li:nth-child(4)").click()
+        cy.wait(3000)
+        cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
+            return Cypress._.random(0, n - 1)
+        }).then((k) => {
+            cy.get('.select2-results li').eq(k).dblclick({ force: true });
+        })
 
         //Define Hours Button
         // cy.get("#define_hrs_btn").dblclick()
@@ -105,9 +130,33 @@ export class CreateJob_Company {
         cy.get(".tab-pane.fade.active.show div:nth-child(6) div:nth-child(2) a").click()
     }
     requirement() {
+        //Required Qualifications
         cy.get("#advert_qualifications").select("CSCS - Gold Card", { force: true })
+
+        //Preferred Qualifications
+        // cy.get("#preferred_qualifications").click()
+        // cy.wait(3000)
+        // cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
+        //     return Cypress._.random(0, n - 1)
+        // }).then((k) => {
+        //     cy.get('.select2-results li').eq(k).dblclick({ force: true });
+        // })
+
+        //Additional Requirements?
         cy.get("#additional_requirment").select("Must have VISA", { force: true })
+
+        //Preferred Skills
+        // cy.get("#preferred_skills").click()
+        // cy.wait(3000)
+        // cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
+        //     return Cypress._.random(0, n - 1)
+        // }).then((k) => {
+        //     cy.get('.select2-results li').eq(k).dblclick({ force: true });
+        // })
+
+        //Minimum Years Experience?
         cy.get("#min_year_exp").select("3", { force: true })
+
         cy.get("#education").type("Bachelors in Computer Science")
         cy.get("#remotetype").select("Flexible")
         cy.get("#cv_required").click()
@@ -115,12 +164,17 @@ export class CreateJob_Company {
         cy.get("#requirement-content div:nth-child(6) div:nth-child(2) a").click()
     }
     about() {
-        cy.get("#company").clear()
-        cy.get("#company").type("TestingCompany1")
-        cy.get("#company_email").clear()
-        cy.get("#company_email").type("testuser@mailinator.com")
-        cy.get("#company_phone").clear()
-        cy.get("#company_phone").type("+442589366852")
+        let randomize = Date.now() % 2
+        if (randomize === 1) {
+            cy.get("#company").clear()
+            cy.get("#company").type("TestingCompany1")
+            cy.get("#company_email").clear()
+            cy.get("#company_email").type("testuser@mailinator.com")
+            cy.get("#company_phone").clear()
+            cy.get("#company_phone").type("+442589366852")
+        }
+        else {
+        }
         cy.get("#about-content input[type='file']").attachFile("pic1.jpg")
         cy.get(".tab-pane.fade.active.show div:nth-child(3) div:nth-child(2) a").click()
     }
@@ -137,23 +191,23 @@ export class CreateJob_Company {
         cy.get("#message-content div:last-child div:last-child a[href='#message-tab']").click()
     }
     socialMedia() {
-        cy.get("#social_textarea").clear()
+        //cy.get("#social_textarea").clear()
         cy.get('#share-content div:last-child div:last-child #preview-JobBoard-btn').click()
     }
     jobPostBilling() {
         cy.wait(3000)
         cy.get('[style="padding-right: 5px; display: block;"] > .modal-dialog > .modal-content > #advert-preview-modal-body > .new-design > .floating-contact-btn > .container-fluids > .bottom-bar-float > #post_a_advert').click({ force: true })
-        
+
         cy.wait(5000)
         cy.get('.modal-dialog > #modal_content > .modal-body').eq(0).as('modal_locator')
-        cy.get('@modal_locator').parent().parent().parent().invoke('attr','class').then(val=>{
-            if(val.includes('show')){
+        cy.get('@modal_locator').parent().parent().parent().invoke('attr', 'class').then(val => {
+            if (val.includes('show')) {
                 cy.get("iframe[name*='__privateStripeFrame']").eq(0).iframe(() => {
                     cy.get('#root .ElementsApp div:first-child div:nth-child(2) span:nth-child(1)').type('424242424242424242424242424')
                 })
                 cy.get('#premium_plan_pay_btn').click()
             }
-            else{
+            else {
                 return
             }
         })
@@ -206,7 +260,7 @@ export class JobApply_User {
 }
 export class JobApplications {
     sms() {
-        cy.get(".navigation ul li:nth-child(2) a[href='/company/recent-applicants']").click({force:true})
+        cy.get(".navigation ul li:nth-child(2) a[href='/company/recent-applicants']").click({ force: true })
         cy.get("#recent_candiadte tbody tr:nth-child(1) td:last-child a:nth-child(1)").click()
         cy.get('[style="padding-right: 5px; display: block;"] > .modal-dialog > .modal-content > .modal-body > #chat-form-global > :nth-child(1) > #messageform-global').type("Thank you for taking the time to apply for our [title] position. Below is a small test we would like you to tackle which should take no more than 20 minutes. This will help us to understand the way you work and also give us some insight into your skills.")
         cy.get('[style="padding-right: 5px; display: block;"] > .modal-dialog > .modal-content > .modal-body > #chat-form-global > :nth-child(2) > .btn').click()

@@ -11,7 +11,7 @@ const billingobj =  new Billing()
 describe('Billing Section testing',()=>{
     beforeEach(() => {
         cy.viewport(1200, 800)
-        loginobj.login('company', "sbisht+demo2@whoppit.com", "testing@12345")
+        loginobj.login('company', "sbisht+demo1@whoppit.com","testing@12345")
         dashboardobj.billingSection()
     })
     it('Change Subscription from billing section',()=>{
@@ -28,7 +28,7 @@ describe('Billing Section testing',()=>{
         billingobj.more_information()
     })
     it('View Invoices from billing section',()=>{
-        billingobj.view_invoices("sbisht+demo2@whoppit.com")
+        billingobj.view_invoices("sbisht+demo1@whoppit.com")
     })
     it('Delete Card Details from billing section',()=>{
         billingobj.delete_card()

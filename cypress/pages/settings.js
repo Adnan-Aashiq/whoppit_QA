@@ -31,7 +31,6 @@ export class Settings {
             var val =$element.attr('value')
             if(val==='Pending'){
                 result ='Find';
-                cy.log(result)
             }
             else{
             }

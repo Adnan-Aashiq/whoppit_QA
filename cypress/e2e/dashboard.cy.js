@@ -14,7 +14,7 @@ describe('DashBoard sections testing', () => {
         loginobj.login("company","alex.ramsdale@icloud.com","testing@123456")
         dashboardobj.dashboardTesting()
     })
-    it.only('Dashboard left Menu Testing by Company profile', () => {
+    it('Dashboard left Menu Testing by Company profile', () => {
         loginobj.login("company","alex.ramsdale@icloud.com","testing@123456")
         dashboardobj.leftMenu_Testing()
     })

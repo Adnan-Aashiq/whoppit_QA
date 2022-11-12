@@ -14,8 +14,8 @@ export class Billing {
         cy.get('.media-body > .row > label').should('have.text', 'whoppit Pro')
 
         cy.get('.col-sm-4 > .mt-0').should('have.text', 'Credits')
-        cy.get('#credit_table > tr > :nth-child(1)').should('have.text', 'Name')
-        cy.get('#credit_table > tr > :nth-child(2)').should('have.text', 'Quantity')
+        cy.get('#credit_table > :nth-child(1) > :nth-child(1)').should('have.text', 'Name')
+        cy.get('#credit_table > :nth-child(1) > :nth-child(2)').should('have.text', 'Quantity')
 
         //Subscription Section
         cy.get(':nth-child(3) > .section-heading').should('have.text', 'Subscription')
@@ -95,7 +95,7 @@ export class Billing {
         cy.get("iframe[name*='__privateStripeFrame']").eq(2).iframe(() => {
             cy.get('#root .ElementsApp div:first-child div:nth-child(2) span:nth-child(1)').type('424242424242424242424242424')
         })
-        cy.get('#payment_modal > .modal-dialog > .modal-content > .modal-body > .stripe-wrap > .buy-more-credit > #payment-form > #number_of_licenses > .col-sm-8 > #user_license_quantity').select('4')
+        //cy.get('#payment_modal > .modal-dialog > .modal-content > .modal-body > .stripe-wrap > .buy-more-credit > #payment-form > #number_of_licenses > .col-sm-8 > #user_license_quantity').select('4')
         cy.get('#payment_modal > .modal-dialog > .modal-content > .modal-body > .stripe-wrap > .buy-more-credit > #payment-form > .field-wrap.text-center > #pay_card_button').click()
     }
     buy_whoppit_credits() {

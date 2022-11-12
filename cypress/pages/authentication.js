@@ -11,7 +11,7 @@ export class Login {
             cy.get("#contact_number").type("+447506866725")
             cy.get("#password").type("Testinguser@" + num + ".", { force: true })
             cy.get("#user-signup-btn-step1").click()
-            cy.wait(2000)
+            cy.wait(7000)
         }
         else if (usertype == 'company') {
             cy.get(".text-muted a[href*='company']").click()
@@ -24,12 +24,15 @@ export class Login {
         }
     }
     selectingOrganization() {
-        const value = "Director, Finance manager, Site foreman, Owner"
-        const vals = value.split(",");
-        for (var i = 0; i < vals.length; i++) {
-            cy.get('.select2-search__field')
-                .type(vals[i] + "{enter}")
+        for (var i = 0; i < 5; i++) {
+            cy.get('.select2-search__field').click()
+            cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
+                return Cypress._.random(0, n - 1)
+            }).then((k) => {
+                cy.get('.select2-results li').eq(k).dblclick({ force: true });
+            })
         }
+
         cy.get("#company_contact_number").type("+9123456789")
         cy.get("#company-signup-btn-step2").click()
     }
@@ -76,14 +79,17 @@ export class Login {
             cy.get("#company-signup-btn-step4").click()
 
         })
+        
     }
     step2user() {
-
+        cy.wait(5000)
         for (var i = 0; i < 5; i++) {
-            let num = Math.floor((Math.random() * 20) + 1);
-            cy.get("#user-signup-form-step2 div:nth-child(1) .select2-selection__rendered").click()
-            cy.get(".select2-results__options li:nth-child(" + num + ")").click()
-            cy.wait(2000)
+            cy.get('#user-signup-form-step2 div:nth-child(1) .select2-selection__rendered').click()
+            cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
+                return Cypress._.random(0, n - 1)
+            }).then((k) => {
+                cy.get('.select2-results li').eq(k).dblclick({ force: true });
+            })
         }
         for (var i = 0; i < 3; i++) {
             let num = Math.floor((Math.random() * 10) + 1);
@@ -116,36 +122,36 @@ export class Login {
         cy.get("#custom_message").type("Thanks for asking! I don’t have anything else to add. I feel like we covered the important topics, and I was able to share the key pieces of my background and how they’d help me perform well in the role. It was great learning about the role, and the opportunity to do XYZ in this position sounds especially interesting. What are the next steps in the process?")
         cy.get("#sendReferenceReq").click()
     }
-    login(usertype,email,password) {
+    login(usertype, email, password) {
         cy.visit("https://dev.whoppit.com")
         if (usertype == 'user') {
             cy.get("#email").type(email)
             cy.get("#password").type(password)
-            cy.get("#"+usertype+"-login-btn").click()
+            cy.get("#" + usertype + "-login-btn").click()
         }
         else if (usertype == 'company') {
             cy.get("#login-box a").click()
             cy.get("#email").type(email)
             cy.get("#password").type(password)
-            cy.get("#"+usertype+"-login-btn").click()
+            cy.get("#" + usertype + "-login-btn").click()
         }
     }
-    forgotPassword(usertype){
+    forgotPassword(usertype) {
         cy.visit("https://dev.whoppit.com")
         if (usertype == 'user') {
-            cy.get("a[href*='/"+usertype+"/forgot-password']").click()
+            cy.get("a[href*='/" + usertype + "/forgot-password']").click()
             cy.get("#email").type('testuser37@mailinator.com')
-            cy.get("#"+usertype+"-forgot-password-btn").click()
+            cy.get("#" + usertype + "-forgot-password-btn").click()
             cy.wait(2000)
-            cy.get("a[href*='/"+usertype+"/login']").click()
+            cy.get("a[href*='/" + usertype + "/login']").click()
         }
         else if (usertype == 'company') {
             cy.get("#login-box a").click()
-            cy.get("a[href*='/"+usertype+"/forgot-password']").click()
-            cy.get("#email").type('alex.ramsdale@icloud.com')
-            cy.get("#"+usertype+"-forgot-password-btn").click()
+            cy.get("a[href*='/" + usertype + "/forgot-password']").click()
+            cy.get("#email").type('1@mailinator.com')
+            cy.get("#" + usertype + "-forgot-password-btn").click()
             cy.wait(2000)
-            cy.get("a[href*='/"+usertype+"/login']").click()
+            cy.get("a[href*='/" + usertype + "/login']").click()
         }
     }
 

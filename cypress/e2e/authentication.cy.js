@@ -17,15 +17,15 @@ describe('Authetication for new User',()=>{
         loginobj.clickOnCompany()
         loginobj.signupFormStep4()
     })
-    it.only('Forgot password company Profile',()=>{
+    it('Forgot password company Profile',()=>{
         loginobj.forgotPassword("company")
     })
     it('Edit Company Profile',()=>{
-        loginobj.login("company","alex.ramsdale@icloud.com","testing@123456")
+        loginobj.login("company","1@mailinator.com","One@123...")
         userprofileobj.editCompanyProfile()
     })
-    it.only('Change password Company Profile',()=>{
-        loginobj.login("company","alex.ramsdale@icloud.com","testing@123456")
+    it('Change password Company Profile',()=>{
+        loginobj.login("company","1@mailinator.com","One@123...")
         userprofileobj.changePassowrd('company')
     })
     it('Registration form for Jobseeker profile',()=>{

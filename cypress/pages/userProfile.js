@@ -2,6 +2,7 @@
 
 export class UserProfile {
     editCompanyProfile() {
+        cy.wait(10000)
         cy.get(".text-dark.dropdown-toggle.nav-user").click()
         cy.get("a[href*='user/edit']").click()
         cy.get("#select2-company_roles-container").type("Events planner" + "{enter}")
@@ -12,6 +13,7 @@ export class UserProfile {
         cy.get(".col-xl-6 > .card > .card-body > #edit_company_user_form > #edit_company_user").click()
     }
     editUserProfile() {
+        cy.wait(10000)
         cy.get(".text-dark.dropdown-toggle.nav-user").click()
         cy.get("a[href*='user/edit']").click()
 
@@ -23,7 +25,6 @@ export class UserProfile {
 
         cy.get("#first_name").clear()
         cy.get("#first_name").type("Black")
-        cy.get("#first_name").should('have.text',"Black")
 
         cy.get("#last_name").clear()
         cy.get("#last_name").type("Adam")
@@ -72,6 +73,7 @@ export class UserProfile {
         cy.get("#user-edit-profile-btn").click()
     }
     changePassowrd(usertype) {
+        cy.wait(10000)
         cy.get(".text-dark.dropdown-toggle.nav-user").click()
         cy.get("a[data-target='#change-password-modal']").click()
         let password
@@ -79,12 +81,15 @@ export class UserProfile {
             password = 'Testinguser@37.'
         }
         else if (usertype == 'company') {
-            password = 'testing@123456'
+            password = 'One@123...'
         }
-        cy.log(password)
+        cy.wait(2000)
         cy.get("#oldpassword").type(password)
+        cy.wait(2000)
         cy.get("#newpassword").type(password)
+        cy.wait(2000)
         cy.get("#confirm_password").type(password)
+        cy.wait(2000)
         cy.get("#change-password-btn").click()
     }
 }
