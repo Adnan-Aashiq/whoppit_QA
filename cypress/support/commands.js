@@ -46,3 +46,4 @@ Cypress.Commands.add('getIframe', (iframe) => {
 })
 import 'cypress-file-upload';
 import 'cypress-iframe';
+import "cypress-real-events/support";

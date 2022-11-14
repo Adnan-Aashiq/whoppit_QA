@@ -11,12 +11,12 @@ const settingssobj = new Settings()
 describe('Settings Section testing', () => {
     beforeEach(() => {
         cy.viewport(1200, 800)
-        loginobj.login('company', "alex.ramsdale@icloud.com", "testing@123456")
+        loginobj.login('company', "sbisht+demo1@whoppit.com", "testing@12345")
         dashboardobj.setting()
     })
     it('Setting sections components testing', () => {
         settingssobj.basic_settings()
-        //have to delete Pending Lane if exist before running the test
         settingssobj.job_applications()
+        settingssobj.jobAd_settings()
     })
 })

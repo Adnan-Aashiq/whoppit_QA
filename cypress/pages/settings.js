@@ -37,6 +37,52 @@ export class Settings {
         }).then(()=>{
             expect(result).to.eq('Find');
         })
+        cy.get('.delete-icon svg').click()
+        cy.on('window:confirm',(str)=>{
+            return true
+        })
+    }
+    jobAd_settings(){
+        cy.get('#post-job-ad-tab').click()
+        //Number of Hires
+        cy.get('#number_of_hires').select('5', { force: true });
+
+        //Industry
+        cy.get("#select2-advert_industry-container").click()
+        cy.wait(3000)
+        cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
+            return Cypress._.random(0, n - 1)
+        }).then((k) => {
+            cy.get('.select2-results li').eq(k).dblclick({ force: true });
+        })
+
+        cy.get("#advert_settings_form input[type='file']").attachFile("pic1.jpg")
+
+        //Job Type
+        cy.get("#select2-job_type-container").click()
+        cy.wait(3000)
+        cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
+            return Cypress._.random(0, n - 1)
+        }).then((k) => {
+            cy.get('.select2-results li').eq(k).dblclick({ force: true });
+        })
+
+        cy.get("#min_year_exp").select("5", { force: true })
+        cy.get("#remotetype").select("Flexible",{force: true})
+
+        let randomize = Date.now() % 2
+        if (randomize === 1) {
+            cy.get("#company").clear()
+            cy.get("#company").type("TestingCompany1")
+            cy.get("#company_email").clear()
+            cy.get("#company_email").type("testuser@mailinator.com")
+            cy.get("#company_phone").clear()
+            cy.get("#company_phone").type("+442589366852")
+        }
+        else {
+        }
+
+        cy.get('#setting_advert_form_submit').click()
     }
 
 }
