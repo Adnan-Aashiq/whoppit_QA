@@ -157,8 +157,8 @@ export class Dashboard {
 
         cy.get('.notes > .nav-link').click()
         cy.get('.notes > .nav-link').should('have.text', 'Notes')
-        // cy.get('#notes > #add_note_form > :nth-child(1) > .form-control').type('the quick brown fox jumped over the lazy dog')
-        // cy.get('#notes > #add_note_form > :nth-child(2) > #add_note_btn').click()
+        cy.get('#notes > #add_note_form > :nth-child(1) > .form-control').type('the quick brown fox jumped over the lazy dog')
+        cy.get('#notes > #add_note_form > :nth-child(2) > #add_note_btn').click()
         cy.wait(7000)
         cy.get('#user-detail-modal-header > .close').click()
         cy.get('#recent-hires-section .viem-more ul ul li:nth-child(2) a').click({ force: true })

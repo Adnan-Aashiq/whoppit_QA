@@ -2,40 +2,34 @@
 ///<reference types="cypress-iframe" />
 
 
+
 export class CreateJob_Company {
+    random_dd() {
+        cy.wait(3000)
+        cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
+            return Cypress._.random(0, n - 1)
+        }).then((k) => {
+            cy.get('.select2-results li').eq(k).click();
+        })
+    }
     basic() {
         let num = Math.floor(Math.random() * 10 + 1);
 
         //Number of Hires
-        cy.get('#number_of_hires').select('5', { force: true });
+        cy.get('#number_of_hires').select(num, { force: true });
 
         //Industry
         cy.get("#select2-advert_industry-container").click()
-        cy.wait(3000)
-        cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
-            return Cypress._.random(0, n - 1)
-        }).then((k) => {
-            cy.get('.select2-results li').eq(k).dblclick({ force: true });
-        })
+        this.random_dd()
 
         //Job Title
         cy.get("#select2-advert_job_title-container").click()
-        cy.wait(3000)
-        cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
-            return Cypress._.random(0, n - 1)
-        }).then((k) => {
-            cy.get('.select2-results li').eq(k).dblclick({ force: true });
-        })
+        this.random_dd()
 
         //Location
         cy.get(':nth-child(2) > :nth-child(2) > .form-group-inner > .tw-items-center > .right-field > .field-wrap > .select2 > .selection > .select2-selection').click()
         cy.get('.select2-dropdown > .select2-search > .select2-search__field').type("new")
-        cy.wait(3000)
-        cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
-            return Cypress._.random(0, n - 1)
-        }).then((k) => {
-            cy.get('.select2-results li').eq(k).dblclick({ force: true });
-        })
+        this.random_dd()
 
         //Postcode
         // cy.get("#postcode").type("123456", { force: true })
@@ -60,12 +54,7 @@ export class CreateJob_Company {
 
         //Job Type
         cy.get("#select2-job_type-container").click()
-        cy.wait(3000)
-        cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
-            return Cypress._.random(0, n - 1)
-        }).then((k) => {
-            cy.get('.select2-results li').eq(k).dblclick({ force: true });
-        })
+        this.random_dd()
 
         //ASAP Check
         cy.get("#start_asap").click()
@@ -87,12 +76,7 @@ export class CreateJob_Company {
         cy.get("#salary").clear()
         cy.get("#salary").type("1200")
         cy.get("#select2-salarytype-container").click()
-        cy.wait(3000)
-        cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
-            return Cypress._.random(0, n - 1)
-        }).then((k) => {
-            cy.get('.select2-results li').eq(k).dblclick({ force: true });
-        })
+        this.random_dd()
 
         //Define Hours Button
         // cy.get("#define_hrs_btn").dblclick()
@@ -176,7 +160,17 @@ export class CreateJob_Company {
         else {
         }
         cy.get("#about-content input[type='file']").attachFile("pic1.jpg")
-        cy.get(".tab-pane.fade.active.show div:nth-child(3) div:nth-child(2) a").click()
+        cy.url().then(URL => {
+            if (URL.includes('post-advert')) {
+                cy.get(".tab-pane.fade.active.show div:nth-child(3) div:nth-child(2) a").click()
+            }
+            else if (URL.includes('edit-advert')) {
+                cy.contains('Update').click()
+            }
+            else {
+
+            }
+        })
     }
     jobBoards(job_board) {
         if (job_board == 'TOTALJOBS') {
