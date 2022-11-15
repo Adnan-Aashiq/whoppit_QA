@@ -22,7 +22,7 @@ describe('DashBoard sections testing', () => {
         loginobj.login("user","testuser37@mailinator.com","Testinguser@37.")
         dashboardobj.referenceRequest()
     })
-    it.only('Jobseeker profile', () => {
+    it('Jobseeker profile testing on Company Dashboard', () => {
         loginobj.login("company","alex.ramsdale@icloud.com","testing@123456")
         dashboardobj.jobseekerProfile()
     })
