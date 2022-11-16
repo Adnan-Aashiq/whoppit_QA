@@ -41,6 +41,7 @@ export class CreateJob_Company {
         //cy.get(":nth-child(5) > .form-group > .form-group-inner > .tw-items-center").type("no digs" + "{enter}")
 
         //Description
+        cy.get(".note-editable.card-block p").clear()
         cy.get(".note-editable.card-block p").type("The Customer Service Supervisor will oversee and assist customer service employees in the performance of their job duties such as responding to customer inquiries and resolving issues or complaints.")
 
         //Next Button

@@ -12,8 +12,9 @@ describe('Job Ads Section testing', () => {
         loginobj.login('company', "alex.ramsdale@icloud.com", "testing@123456")
         jobadsobj.jobads_homepage()
     })
-    it('Job Ads sections components testing', () => {
+    it.only('Job Ads sections components testing', () => {
         jobadsobj.view_application()
+        cy.get('#job-422 > .card-body-top > .status-icons > .view_contacted > img').click()
         jobadsobj.bulk_message()
         //before running boost make sure user doesnot have below credit
         jobadsobj.boost('TOTALJOBS')
