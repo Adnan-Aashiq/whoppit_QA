@@ -15,9 +15,9 @@ describe('Contacts Section testing', () => {
         contactsobj.contacts_home()
         contactsobj.sms()
     })
-    // it('Send SMS and attachments to contacts components testing', () => {
-    //     messagingobj.contacts()
-    // })
+    it.only('Add New Contact component testing', () => {
+        contactsobj.add_contact()
+    })
     // it('Bulk message contacts components testing', () => {
     //     messagingobj.bulkmessages()
     // })
