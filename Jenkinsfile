@@ -10,7 +10,7 @@ pipeline{
             parallel{
                 stage('Slave Node1'){
                     agent {
-                        label "remote_node1"
+                        label "remote_node3"
                     }
                     steps{
                         git  branch: 'main', url : 'git@github.com:Adnan-Aashiq/whoppit_QA.git'
@@ -21,7 +21,7 @@ pipeline{
                 }
                 stage('Slave Node2'){
                     agent {
-                        label "remote_node2"
+                        label "remote_node4"
                     }
                     steps{
                         git  branch: 'main', url : 'git@github.com:Adnan-Aashiq/whoppit_QA.git'
