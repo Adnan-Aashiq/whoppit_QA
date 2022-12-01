@@ -15,7 +15,7 @@ describe('Contacts Section testing', () => {
         contactsobj.contacts_home()
         contactsobj.sms()
     })
-    it.only('Add New Contact component testing', () => {
+    it('Add New Contact component testing', () => {
         contactsobj.add_contact()
     })
     // it('Bulk message contacts components testing', () => {

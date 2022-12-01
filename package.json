@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "Cypress:runDefault": "cypress run --spec cypress/e2e/*",
-    "cypress:chrome": "cypress run --browser chrome --spec cypress/e2e/*",
-    "cypress:edge": "cypress run --browser edge --spec cypress/e2e/*"
+    "cypress:runDefault": "cypress run --spec cypress/e2e/* --parallel --browser chrome --headed",
+    "cypress:chrome": "cypress run --browser chrome --spec cypress/e2e/* --parallel --browser chrome --headed",
+    "cypress:edge": "cypress run --browser edge --spec cypress/e2e/* --parallel --browser chrome --headed"
   },
   "repository": {
     "type": "git",
