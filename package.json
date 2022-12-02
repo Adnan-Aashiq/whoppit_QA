@@ -7,8 +7,8 @@
     "cypress:runDefault": "cypress run --spec cypress/e2e/* --record --key 2754c08f-87f9-4a10-8d3a-b614e80c674c --parallel --browser chrome",
     "cypress:chrome": "cypress run --spec cypress/e2e/* --record --key 2754c08f-87f9-4a10-8d3a-b614e80c674c --parallel --browser chrome",
     "cypress:edge": "cypress run --spec cypress/e2e/* --record --key 2754c08f-87f9-4a10-8d3a-b614e80c674c --parallel --browser edge",
-    "cypress:settings":"cypress run --spec cypress/e2e/settings.cy.js --record --key 2754c08f-87f9-4a10-8d3a-b614e80c674c --parallel --browser chrome",
-    "cypress:messaging":"cypress run --spec cypress/e2e/messaging.cy.js --record --key 2754c08f-87f9-4a10-8d3a-b614e80c674c --parallel --browser chrome"
+    "cypress:settings": "cypress run --spec cypress/e2e/settings.cy.js --record --key 2754c08f-87f9-4a10-8d3a-b614e80c674c --parallel --browser chrome",
+    "cypress:messaging": "cypress run --spec cypress/e2e/messaging.cy.js --record --key 2754c08f-87f9-4a10-8d3a-b614e80c674c --parallel --browser chrome"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/Adnan-Aashiq/whoppit_QA#readme",
   "devDependencies": {
-    "cypress": "^11.1.0",
+    "cypress": "^11.2.0",
     "cypress-file-upload": "^5.0.8",
     "cypress-iframe": "^1.0.1"
   },
