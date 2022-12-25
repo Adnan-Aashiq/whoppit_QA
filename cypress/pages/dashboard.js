@@ -171,4 +171,8 @@ export class Dashboard {
         cy.get('#user-detail-modal-header > .close').click()
 
     }
+    notifications(){
+        cy.get('.informative-nav li:nth-child(3)').click()
+        cy.get('#view-all-notify').click()
+    }
 }

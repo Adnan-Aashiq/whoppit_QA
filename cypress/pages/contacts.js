@@ -27,7 +27,7 @@ export class Contacts {
         cy.get('#Password').type('.James@789')
         cy.get('#postcode').type('45632')
         cy.get('#industries option').then(($elements) => {
-            const randomOption = Math.floor(Math.random() * $elements.length);
+            const randomOption = Math.floor(Math.random() * $elements.length+1);
             // select option from drop down
             cy.get('#industries').select(`${$elements[randomOption].innerText}`, { force: true });
         })
@@ -35,24 +35,28 @@ export class Contacts {
         cy.get(':nth-child(2) > .select2 > .selection > .select2-selection > .select2-selection__rendered > .select2-search > .select2-search__field').click()
         createjobcompanyobj.random_dd()
         cy.get("select[name='qualifications'] option").then(($elements) => {
-            const randomOption = Math.floor(Math.random() * $elements.length);
+            const randomOption = Math.floor(Math.random() * $elements.length+1);
             // select option from drop down
+            cy.wait(3000)
             cy.get("select[name='qualifications']").select(`${$elements[randomOption].innerText}`, { force: true });
         })
         cy.get('#date_of_birth').type("2000-09-01")
         cy.get("select[name='salary_type'] option").then(($elements) => {
-            const randomOption = Math.floor(Math.random() * $elements.length);
+            const randomOption = Math.floor(Math.random() * $elements.length+1);
+            cy.log(randomOption)
             // select option from drop down
             cy.get("select[name='salary_type']").select(`${$elements[randomOption].innerText}`, { force: true });
         })
         cy.get('#expected_salary').type('2000')
         cy.get("select[name='experience'] option").then(($elements) => {
-            const randomOption = Math.floor(Math.random() * $elements.length);
+            const randomOption = Math.floor(Math.random() * $elements.length+1);
+            cy.log(randomOption)
             // select option from drop down
             cy.get("select[name='experience']").select(`${$elements[randomOption].innerText}`, { force: true });
         })
         cy.get("select[name='job_type'] option").then(($elements) => {
-            const randomOption = Math.floor(Math.random() * $elements.length);
+            const randomOption = Math.floor(Math.random() * $elements.length+1);
+            cy.log(randomOption)
             // select option from drop down
             cy.get("select[name='job_type']").select(`${$elements[randomOption].innerText}`, { force: true });
         })

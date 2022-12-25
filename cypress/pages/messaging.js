@@ -12,8 +12,8 @@ export class Messaging {
         this.sendsms()
     }
     sendsms() {
-        cy.get('.cm-search-form').type('j')
-        cy.get('.cm-search-form').clear()
+        //cy.get('.cm-search-form').type('j')
+        //cy.get('.cm-search-form').clear()
         cy.wait(10000)
         cy.get('#chat-profile-list .user-card .user-short-info .short-info').should('have.length.greaterThan', 0).its('length').then((n) => {
             return Cypress._.random(0, n - 1)

@@ -26,6 +26,10 @@ describe('DashBoard sections testing', () => {
         loginobj.login("company","alex.ramsdale@icloud.com","testing@123456")
         dashboardobj.jobseekerProfile()
     })
+    it('Notifications listing and View More', () => {
+        loginobj.login("company","alex.ramsdale@icloud.com","testing@123456")
+        dashboardobj.notifications()
+    })
 
     
 })

@@ -1,7 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  //numTestsKeptInMemory :0,
+  numTestsKeptInMemory :0,
   projectId: "hm7zhg",
   hideXHR: true,
   includeShadowDom: true,

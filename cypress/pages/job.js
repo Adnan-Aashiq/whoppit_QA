@@ -9,7 +9,7 @@ export class CreateJob_Company {
         cy.get('.select2-results li').should('have.length.greaterThan', 0).its('length').then((n) => {
             return Cypress._.random(0, n - 1)
         }).then((k) => {
-            cy.get('.select2-results li').eq(k).click();
+            cy.get('.select2-results li').eq(k).click({force: true});
         })
     }
     basic() {

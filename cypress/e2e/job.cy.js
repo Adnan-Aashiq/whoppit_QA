@@ -13,7 +13,7 @@ describe('Job posting and applying', () => {
     beforeEach(() => {
         cy.viewport(1200, 800)
     })
-    it('Create a Job Post By Company', () => {
+    it.only('Create a Job Post By Company', () => {
         loginobj.login('company', "sbisht+demo1@whoppit.com", "testing@12345")
         cy.get(".navigation a[href*='/company/post-free-advert']").click({ force: true })
         createjobcompanyobj.basic()
