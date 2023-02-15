@@ -7,7 +7,7 @@ export class Login {
         if (usertype == 'user') {
             cy.get(".text-muted a[href*='user']").click()
             cy.get("#name").type("TestingJobseeker" + num + "User")
-            cy.get("#email").type("testuser" + num + "@mailinator.com")
+            cy.get("#email").type("testjobseekeruser" + num + "@mailinator.com")
             cy.get("#contact_number").type("+447506866725")
             cy.get("#password").type("Testinguser@" + num + ".", { force: true })
             cy.get("#user-signup-btn-step1").click()
@@ -17,7 +17,7 @@ export class Login {
             cy.get(".text-muted a[href*='company']").click()
             cy.get("#name").type("TestingCompany" + num + "User")
             cy.get("#company_name").type("Testing" + num + "Company")
-            cy.get("#email").type("testuser" + num + "@mailinator.com")
+            cy.get("#email").type("testcompanyuser" + num + "@mailinator.com")
             cy.get("#password").type("Testinguser@" + num + ".", { force: true })
             cy.get("#company-signup-btn-step1").click()
             cy.wait(7000)
@@ -118,7 +118,7 @@ export class Login {
     }
     step5user() {
         let num = Math.floor((Math.random() * 20) + 1);
-        cy.get("#seperated_ref_email").type("testingadnan" + num + "@gmail.com")
+        cy.get("#seperated_ref_email").type("testingadnan" + num + "@mailinator.com")
         cy.get("#custom_message").type("Thanks for asking! I don’t have anything else to add. I feel like we covered the important topics, and I was able to share the key pieces of my background and how they’d help me perform well in the role. It was great learning about the role, and the opportunity to do XYZ in this position sounds especially interesting. What are the next steps in the process?")
         cy.get("#sendReferenceReq").click()
     }
